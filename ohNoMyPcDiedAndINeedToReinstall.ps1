@@ -30,7 +30,7 @@ function ohNoMyPcDiedAndINeedToReinstall {
     # do things in the loop
     $name;
     $path;
-    if($_.length -gt 1){
+    if($_.GetType().Name -ne 'String'){
       $name = $_[0];
       $path = $_[1];
     } else {
