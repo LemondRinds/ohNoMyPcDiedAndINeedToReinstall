@@ -13,13 +13,13 @@ function ohNoMyPcDiedAndINeedToReinstall {
     ,'spotify'
     ,'teracopy'
     ,'discord'
-    ,'googlechrome'
+    ,@('googlechrome','%ProgramFiles%\Google\Chrome\Application\chrome.exe')
     #,'chrome-remote-desktop-chrome' just use browser
     ,'parsec'
     ,'paint.net'
-    ,'notepadplusplus'
-    ,'vscode'
-    ,'steam'
+    ,@('notepadplusplus','%ProgramFiles%\Notepad++\notepad++.exe')
+    ,@('vscode','%ProgramFiles%\Microsoft VS Code\Code.exe')
+    ,@('steam','%ProgramFiles(x86)%\Steam\Steam.exe')
     ,'7zip'
     ,'node'
     ,'go'
@@ -28,7 +28,18 @@ function ohNoMyPcDiedAndINeedToReinstall {
   # do a loop for installs
   $toInstall |% {
     # do things in the loop
-    choco upgrade $_ -y;
+    $name;
+    $path;
+    if($_.length -gt 1){
+      $name = $_[0];
+      $path = $_[1];
+    } else {
+      $name = $_;
+    };
+    choco upgrade $name -y;
+    if($path){
+      # pin stuff later or something
+    }
   };
 }
 
