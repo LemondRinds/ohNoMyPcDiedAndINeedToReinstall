@@ -43,4 +43,4 @@ function ohNoMyPcDiedAndINeedToReinstall {
   };
 }
 
-ohNoMyPcDiedAndINeedToReinstall();
+ohNoMyPcDiedAndINeedToReinstall;
